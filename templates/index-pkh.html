@@ -1,0 +1,145 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class="login">
+    <h1>Selecting PKH Recipients</h1>
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('/pkh/predict)}}" method="post">
+      <table>
+        <tr>
+          <td><input type="text" name="NIK" placeholder="NIK" required="required" /></td>
+          <td>
+            <select name="Usia" required="required">
+              <option value="">-- Pilih Usia --</option>
+              <option value="<25">20-24 Tahun</option>
+              <option value="≥25 - <35">25-34 Tahun</option>
+              <option value="≥35 - ≤50">35-50 Tahun</option>
+              <option value=">50">>50 Tahun</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <select name="Status" required="required">
+              <option value="">-- Pilih Status --</option>
+              <option value="Belum Kawin">Belum Menikah</option>
+              <option value="Sudah Kawin">Sudah Menikah</option>
+              <option value="Cerai">Cerai</option>
+            </select>
+          </td>
+          <td>
+            <select name="Penghasilan" required="required">
+              <option value="">-- Pilih Penghasilan --</option>
+              <option value="0-500.000">0-500.000</option>
+              <option value="500.000 - 2.000.000">500.000 - 2.000.000</option>
+              <option value="2.000.000 - 5.000.000">2.000.000 - 5.000.000</option>
+              <option value=">5.000.000">>5.000.000</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <select name="Kepemilikan_Rumah" required="required">
+              <option value="">-- Pilih Kepemilikan Rumah --</option>
+              <option value="Bebas Sewa">Bebas Sewa</option>
+              <option value="Kontrak">Kontrak</option>
+              <option value="Milik Orang Tua">Milik Orang Tua</option>
+              <option value="Milik Sendiri">Milik Sendiri</option>
+            </select>
+          </td>
+          <td>
+            <select name="Luas_Lantai" required="required">
+              <option value="">-- Pilih Luas Lantai --</option>
+              <option value="≤ 8 m2">≤ 8 m2</option>
+              <option value="≥ 8 m2">≥ 8 m2</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <select name="Jenis_Lantai" required="required">
+              <option value="">-- Pilih Jenis Lantai --</option>
+              <option value="Tanah">Tanah</option>
+              <option value="Semen">Semen</option>
+              <option value="Keramik">Keramik</option>
+              <option value="Granit">Granit</option>
+            </select>
+          </td>
+          <td>
+            <select name="Jenis_Dinding" required="required">
+              <option value="">-- Pilih Jenis Dinding --</option>
+              <option value="Bambu">Bambu</option>
+              <option value="Kayu">Kayu</option>
+              <option value="Tembok">Tembok</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <select name="Jenis_Atap" required="required">
+              <option value="">-- Pilih Jenis Atap --</option>
+              <option value="Jerami">Jerami</option>
+              <option value="Seng">Seng</option>
+              <option value="Genteng">Genteng</option>
+            </select>
+          </td>
+          <td>
+            <select name="Sumber_Air" required="required">
+              <option value="">-- Pilih Sumber Air --</option>
+              <option value="Sungai">Sungai</option>
+              <option value="Sumur">Sumur</option>
+              <option value="Ledeng">Ledeng</option>
+              <option value="PDAM">PDAM</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <select name="Jaringan_Listrik" required="required">
+              <option value="">-- Pilih Jaringan Listrik --</option>
+              <option value="Listrik PLN">Listrik PLN</option>
+              <option value="Non Listrik PLN">Non Listrik PLN</option>
+            </select>
+          </td>
+          <td>
+            <select name="Bhn_msk" required="required">
+              <option value="">-- Pilih Bahan Bakar Masak --</option>
+              <option value="Kayu">Kayu</option>
+              <option value="Minyak Tanah">Minyak Tanah</option>
+              <option value="Gas LPG">Gas LPG</option>
+              <option value="Listrik">Listrik</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <select name="Kepemilikan_Asset" required="required">
+              <option value="">-- Pilih Asset --</option>
+              <option value="Tanah">Tanah</option>
+              <option value="Mobil">Mobil</option>
+              <option value="Motor">Motor</option>
+              <option value="Tidak Punya">Tidak Punya</option>
+            </select>
+          </td>
+          <td><button type="submit" class="btn btn-primary btn-block btn-large">Predict</button></td>
+        </tr>
+      </table>
+    </form>
+
+    <br>
+    <br>
+    {{ prediction_text }}
+  </div>
+</body>
+</html>

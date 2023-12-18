@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Selecting BPNT</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('/predict_bpnt')}}" method="post">
+    	<input type="text" name="NIK" placeholder="NIK" required="required" />
+        <select name="Usia" required="required">
+          <option value="">-- Pilih Usia --</option>
+          <option value="<25">20-24 Tahun</option>
+          <option value="≥25 - <35">25-34 Tahun</option>
+          <option value="≥35 - ≤50">35-50 Tahun</option>
+          <option value=">50">>50 Tahun</option>
+        </select> <br>
+        <select name="Status" required="required">
+          <option value="">-- Pilih Status --</option>
+          <option value="Belum Kawin">Belum Menikah</option>
+          <option value="Sudah Kawin">Sudah Menikah</option>
+          <option value="Cerai">Cerai</option>
+        </select>
+        <select name="Pendidikan" required="required">
+          <option value="">-- Pilih Pendidikan Terakhir --</option>
+          <option value="SD">SD</option>
+          <option value="SMP">SMP</option>
+          <option value="SLTA">SLTA</option>
+          <option value="S1">S1</option>
+          <option value="S2">S2</option>
+        </select> <br>
+        <select name="Pekerjaan" required="required">
+          <option value="">-- Pilih Pekerjaan --</option>
+          <option value="Belum/Tidak Bekerja">Belum/Tidak Bekerja</option>
+          <option value="Buruh">Buruh</option>
+          <option value="Wiraswasta">Wiraswasta</option>
+          <option value="Swasta">Swasta</option>
+        </select>
+        <select name="Penghasilan" required="required">
+          <option value="">-- Pilih Penghasilan --</option>
+          <option value="0-500.000">0-500.000</option>
+          <option value="500.000 - 2.000.000">500.000 - 2.000.000</option>
+          <option value="2.000.000 - 5.000.000">2.000.000 - 5.000.000</option>
+          <option value=">5.000.000">>5.000.000</option>
+        </select> <br>
+        <select name="Tanggungan" required="required">
+          <option value="">-- Pilih Tanggungan --</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value=">4">>4</option>
+        </select>
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
